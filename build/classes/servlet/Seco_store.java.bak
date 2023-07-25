@@ -1,0 +1,118 @@
+package servlet;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.GetSecoStoreListLogic;
+import model.PostSecoStoreLogic;
+import model.SecoStoreBeans;
+
+/**
+ * Servlet implementation class Seco_store
+ */
+@WebServlet("/Seco_store")
+public class Seco_store extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("Seco_store:doPost() START");
+
+		// リクエストパラメータの取得
+		request.setCharacterEncoding("UTF-8");
+		String userID  = request.getParameter("userID");		// アカウント名
+		String pass     = request.getParameter("pass");			// パスワード
+		String userName = request.getParameter("userName"); 	// 店舗名／氏名
+		String spostCode = request.getParameter("postCode");	// 郵便番号
+		String area  = request.getParameter("area");			// 住所
+		String address  = request.getParameter("address");		// 住所
+		String phone    = request.getParameter("phone");		// 電話番号
+		String shopComment = request.getParameter("shopComment");	// 店舗コメント
+		String mail     = request.getParameter("mail");			// メールアドレス
+		
+		// 地域カテゴリの抽出
+		//String userCategory = request.getParameter("userCategory");	// ユーザーカテゴリ
+		String userCategory = "1";	// ユーザーカテゴリ　1固定
+		String postCode = request.getParameter("postCode");
+
+		// 入力値チェック
+		int		iErrorBit = 0;
+		if (userID == null) {
+			iErrorBit |= 0x0001;
+			System.out.println("ERROR:userID");
+		}
+		if (pass == null) {
+			iErrorBit |= 0x0002;
+			System.out.println("ERROR:pass");
+		}
+		if (userName == null) {
+			iErrorBit |= 0x0004;
+			System.out.println("ERROR:userName");
+		}
+		if (spostCode == null || spostCode.length() != 8) {
+			iErrorBit |= 0x0008;
+			System.out.println("ERROR:postCode");
+		}
+//		else {
+//			try{
+//				postCode = Integer.parseInt(spostCode);
+//				System.out.println(postCode);
+//			}
+//			catch (NumberFormatException ex){
+//				//ex.printStackTrace();
+//			iErrorBit |= 0x0008;
+//			System.out.println("ERROR:postCode");
+//		}
+		if (address == null || address.length() == 0) {
+			iErrorBit |= 0x020;
+			System.out.println("ERROR:address");
+		}
+		else {
+			address = area+address;
+		}
+		if (phone == null || phone.length() == 0) {
+			iErrorBit |= 0x0040;
+			System.out.println("ERROR:phone");
+		}
+		if (shopComment == null || shopComment.length() == 0) {
+			iErrorBit |= 0x0080;
+			System.out.println("ERROR:shopComment");
+		}
+		if (mail == null || mail.length() == 0) {
+			iErrorBit |= 0x0100;
+			System.out.println("ERROR:mail");
+		}
+		
+		if(iErrorBit == 0) {
+			SecoStoreBeans secoStoreB = new SecoStoreBeans(userID,pass
+					,userCategory,userName,postCode,area,address,phone,shopComment,mail);
+			PostSecoStoreLogic postSecoStoreLogic = new PostSecoStoreLogic();
+			postSecoStoreLogic.execute(secoStoreB);
+		}
+		else {
+			// エラーメッセージをリクエストスコープに保存
+			request.setAttribute("errorMsg","入力エラーがあります");
+		}
+
+		// つぶやきリストを取得して、リクエストスコープに保存
+		GetSecoStoreListLogic getSecoStoreListLogic = new GetSecoStoreListLogic();
+		List<SecoStoreBeans> secoStoreBList = getSecoStoreListLogic.execute();
+		request.setAttribute("secoStoreBList", secoStoreBList);
+
+		// フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/seco_register.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+}

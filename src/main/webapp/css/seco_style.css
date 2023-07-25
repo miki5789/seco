@@ -1,0 +1,401 @@
+/* 全てのページに適用される設定 */
+
+html {
+	font-size: 16px;
+	font-family: "游ゴシック", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+	scroll-behavior: smooth;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0 0 0 0;
+}
+
+p, li, td {
+	line-height: 1.7;
+}
+
+a:link {
+	color: #444444;
+	text-decoration: none;
+}
+a:visited {
+	color: #444444;
+	text-decoration: none;
+}
+a:hover {
+	color: #FF5B00;
+	text-decoration: none;
+}
+
+a:active {
+	color: #F07D34;
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 250px;
+}
+
+/* 全てのページに適用 - メイン */
+
+main {
+	margin: 90px auto 90px auto;
+	max-width: 1100px;
+}
+
+main h2 {
+	margin: 20px auto 20px auto;
+	border-bottom: 2px solid #990000;
+	background-color: #FFFFFF;
+	padding: 0 0 5px 0;
+	color: #222222;
+	font-size: 1.3em;
+	max-width: 90%;
+}
+
+main table {
+	width: 90%;
+}
+
+
+/* 全てのページに適用 - ヘッダー */
+.header {
+	padding-top: 30px;
+	border-top: 6px solid #660000;
+	border-image: linear-gradient(to right, #990000 0%, #ffc500 100%);
+ 	border-image-slice: 1;
+}
+
+.logo {
+	text-align: center;
+	
+}
+
+.logo h2{
+	font-size: 50px;
+	font-family: 'Cherry Swash', cursive;
+	color: #c6a211;
+	letter-spacing: 0.8em;	
+	/*
+	background: -webkit-linear-gradient(0deg, #ffd717, #ac8c0f);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	*/
+	text-shadow: 2px 1px 2px #7b650b;
+}
+
+.joy{
+	font-size: 30px;
+	font-family: 'Homemade Apple', cursive;
+	font-weight:normal;
+	text-decoration: none;
+	letter-spacing: 0.1em;
+}
+
+.foot_joy{
+	font-family: 'Homemade Apple', cursive;
+	font-weight:normal;
+	text-decoration: none;
+	letter-spacing: 0.1em;
+}
+
+
+.nav ul {
+	margin: 30px 0 0 0;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+}
+
+.nav a:link {
+	color: #253958;
+}
+.nav a:visited {
+	color: #253958;
+}
+.nav a:hover {
+	text-decoration: none;
+}
+.nav a:active {
+	text-decoration: none;
+}
+
+
+
+/* 全てのページに適用 - ヒーロー */
+.hero {
+	padding: 200px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: #ffffff;
+	text-align: center;
+}
+
+.hero.access {
+	background-image: url(../images/access-hero.jpg);
+}
+
+.hero.menu {
+	background-image: url(../images/menu-hero.jpg);
+}
+
+.hero.contact {
+/* 	background-image: url(../images/teishoku.png); */
+	background-image: url(../images/bg_img1.jpg);
+}
+
+
+.hero.index {
+	padding: 287px 0;
+	background-image: url(../images/home-hero.jpg);
+}
+
+/* 全てのページに適用 - フッター */
+.gotop {
+	text-align: center;
+}
+
+.gotop img {
+	filter: hue-rotate(180deg);
+}
+
+.copyright {
+	margin-top: 20px;
+	margin-bottom: 0;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	/*background-color: #D4D925;*/
+	background: radial-gradient(#AA2B1D, #660000);
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 1.1em;
+	font-family: 'Cherry Swash', cursive;
+	letter-spacing: 0.7em;
+}
+
+/* 個別のスタイル */
+/* intex.html */
+.logo-whale {
+	text-align: center;
+}
+
+.shop-info {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+
+.general th, .general tr, .general td {
+	border: 0px none #DBDBDB;
+	padding: 10px;
+}
+	
+.shop-info th, .shop-info td {
+	border: 1px solid #DBDBDB;
+	padding: 10px;
+}
+
+
+.shop-info td img {
+	max-width: 600px;
+	max-height: 450px;
+}
+.shop-info th, .general th {
+	width: 300px;
+	text-align: left;
+	background-color: #c6a211;
+	border-radius: 4px;
+}
+/* menu.html */
+.items{
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr 1fr;
+ gap: 15px;
+}
+
+
+.item {
+ background-color: #FFFFFF;
+ padding:15px;
+ /*border: 1px solid #CCCCCC;*/
+ border: 1px solid;
+ border-color: #CCCCCC;
+ border-radius: 12px;
+}
+
+
+/* 最新の5件用 (index.jsp) */
+.new_items {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+ gap: 10px;
+}
+
+.new_item {
+ background-color: #FFFFFF;
+ padding:5px;
+ border: 0px solid;
+ border-radius: 2px;
+ color: #eeeeee;
+ display: flex;
+ align-items: flex-end;
+}
+
+/* result.html(仮)の サムネイルのセンタリング エフェクト */
+.thum_img{
+ margin: 0;
+ padding: 0;
+ text-align: center;
+ cursor: pointer;
+ overflow: hidden;
+}
+
+.thum_img img{
+  height: auto;
+  transition: transform .6s ease; /* ゆっくり変化させる */
+}
+
+.thum_img:hover img{
+ transform: scale(1.1); /* 拡大 */
+}
+/* contact.html*/
+
+form {
+ margin: 0 auto;
+ max-width: 900px;
+ font-size: 1.3rem;
+}
+
+.toroku {
+	font-weight: normal;
+	font-size: 20px;
+	/* submitマウスオーバーで手のアイコンにする */
+	cursor: pointer;
+}
+
+input[type="text"], input[type="file"], textarea, select {
+ padding: 6px;
+ width: 100%;
+ font-size: 1.1rem;
+}
+
+
+textarea, text {
+ height: 140px;
+ width: 100%;
+ padding: 8px 8px;
+}
+
+text {
+ height: 140px;
+ width: 100%;
+ padding: 8px 8px;
+}
+
+input[type="submit"], p.login, p.logout {
+ border: none;
+ padding: 20px;
+ width: 200px;
+ background-color: #990000;
+ color: #FFFFFF;
+ font-size: 1rem;
+ text-align: center;
+ border-radius: 10px;
+}
+
+/* menu.html */
+.bnr {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr 1fr;
+ gap: 5px;
+}
+
+.bnr img {
+ max-width: 98%;
+ max-height: 300px;
+ margin: auto;
+ display: block;
+}
+
+/* モバイル対応 */
+@media(max-width: 767px) {
+ .nav ul {
+  flex-wrap: wrap;
+  gap: 20px;
+ }
+ 
+ main {
+  padding: 0 4%;
+ }
+ 
+ /* index.html */
+ .hero.index {
+  padding: 28vh 0;
+ }
+ 
+ /* menu.html*/
+ .items, .bnr {
+  grid-template-columns: 1fr 1fr;
+ }
+ 
+ /* ログインページアイコン（どこつぶ用）*/
+ .login_icon img {
+   width: 50%;
+   height: 50%;
+ }
+ 
+button #scroll-to-top-btn{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	height: 50px;
+	width: 50px;
+	color: #FFF;
+	font-size: 32px;
+	background-color: #FFFFFF;
+	border: none;
+	border-radius: 100%;
+	outline: none;
+	transform: rotate(-90deg);
+}
+
+#btn{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  cursor:pointer;
+  width:100px;
+  height:100px;
+  border-radius: 50%;
+}
+
+
+p #kensaku{
+ font-size: 30px;
+}
+
+#search{
+
+	display: flex;
+	justify-content: center;
+	font-size: 30px;
+
+}
+
+ /* item.html アイテムページ */
+
+#lag {
+	font-family: 'Homemade Apple', cursive;
+	font-size: 50px;
+}
+
+
+}
